@@ -1,0 +1,1 @@
+//Wordle grid, 6 rows, 5 letters each. Colors the cells for relevant feedback
