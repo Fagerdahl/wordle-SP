@@ -1,0 +1,5 @@
+💡 Thoughts and motives during the process of building this app
+
+I will begin to build my logic in backend so that frontend has someone to talk to, date and finally marry to live happily ever after 👰‍♀️
+
+
