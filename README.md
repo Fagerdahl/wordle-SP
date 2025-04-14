@@ -13,6 +13,7 @@ Built with **React frontend + Express backend**
 Data is stored in **MongoDB**
 
 # 🎯 How the GAME works
+User begins by chosing game settings (word length and repeating letters)
 A word is randomly selected via a backend API that communicates with mongoDB database.
 User enters guesses in a free text field and feedback is provided using colors:
 🟩 Green = correct letter and position

@@ -1,0 +1,46 @@
+/* Centered form */
+.guess-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Styling for textinput */
+.guess-input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Styling for btn */
+.guess-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #538d4e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.guess-button:hover {
+  background-color: #446c3f;
+  transform: scale(1.1);
+}
+
+/* Responsivite: Input field adjusted to smaller screens */
+@media (max-width: 500px) {
+  .guess-input {
+    width: 120px;
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .guess-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}

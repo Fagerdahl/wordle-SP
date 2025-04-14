@@ -1,0 +1,63 @@
+/* Background behind modal */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  /* Modal styling */
+  .modal {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 90%;
+    width: 500px;
+    max-height: 80%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  .about-page {
+    padding: 1rem;
+  }
+  
+  .about-description {
+    margin-bottom: 1rem;
+  }
+  
+  .modal-text {
+    color: #000;
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+  
+  /* A little glam for my buttons */
+  button {
+    background-color: #538d4e; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 1rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #40733c;
+  }
+  
+  button:focus {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+  }
+  

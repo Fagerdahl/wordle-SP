@@ -1,0 +1,42 @@
+.board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .board-row {
+    display: flex;
+    gap: 6px;
+  }
+  
+  .board-cell {
+    width: 45px;
+    height: 45px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Feedback colors */
+  .board-cell.correct {
+    background-color: #538d4e; /* green */
+  }
+  
+  .board-cell.misplaced {
+    background-color: #b59f3b; /* yellow */
+  }
+  
+  .board-cell.incorrect {
+    background-color: #b22222; /* red */
+  }
+  
+  .board-cell.empty {
+    background-color: #3a3a3c; /* empty */
+  }
+  

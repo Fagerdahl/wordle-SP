@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+//Routing and layout for my SPA
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
+//Main Pages
+import Home from "./pages/Home";
+import About from "./pages/About";
+//Global layout component
+import Navbar from "./Components/Navbar";
 
+
+//If URL is unmatched, this is the fallback component (inline atm)
+const NotFound = () => (
+  <div style={{ textAlign: "center", padding: "2rem" }}>
+    <h2>404 - Page not found</h2>
+    <p>The page you're looking for doesn't exist!</p>
+  </div>
+);
+
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Router>
+      <Navbar />
+      <Routes>
+        {/* Home – main gameplay */}
+        <Route path="/" element={<Home />} />
 
-export default App
+        {/* About – static info page */}
+        <Route path="/about" element={<About />} />
+        {/* Fallback if URL unmatched */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
