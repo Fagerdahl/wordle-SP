@@ -1,0 +1,1 @@
+//Handling connection to mongoDB, needs connection to server.js to connect do database before server runs

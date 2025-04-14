@@ -1,0 +1,1 @@
+//A schema for my word-collection
