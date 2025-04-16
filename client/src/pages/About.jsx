@@ -1,6 +1,6 @@
 //Static page about this project
 import React, { useState } from "react";
-import "./About.css"; 
+import "./About.css";
 
 const About = () => {
   const [showModal, setShowModal] = useState(false);
@@ -17,9 +17,11 @@ const About = () => {
     <div className="about-page">
       <h1>Welcome to my version of Wordle</h1>
       <p className="about-description">
-        This project was part of a Fullstack education program at Lernia Yrkeshögskola.
+        This project was part of a Fullstack education program at Lernia
+        Yrkeshögskola.
         <br />
-        My Goal was to create a Fun & Interactive Game based on Fullstack Development.
+        My Goal was to create a Fun & Interactive Game based on Fullstack
+        Development.
         <br />
         Built with ❤️ & a lot of debugging!
       </p>

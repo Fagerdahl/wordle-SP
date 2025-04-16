@@ -2,41 +2,34 @@
 import React, { useState } from "react";
 import "./GuessInput.css";
 
-const GuessInput = ({ onSubmitGuess, disabled, onPlayAgain, wordLength }) => {
-  const [guess, setGuess] = useState("");
+export default function GuessInput({ onSubmitGuess, disabled, wordLength }) {
+  const [currentGuess, setCurrentGuess] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (disabled) {
-       //When game is over, play again
-      onPlayAgain();
+    if (currentGuess.length !== wordLength) {
+      alert(`Guessed word must be ${wordLength} characters in length!`);
       return;
     }
 
-    if (guess.length !== 5) {
-      alert("Guessed word must be 5 characters in length!");
-      return;
-    }
-    onSubmitGuess(guess);
-    setGuess("");
+    onSubmitGuess(currentGuess);
+    setCurrentGuess("");
   };
 
   return (
-    <form onSubmit={handleSubmit} className="guess-form">
+    <form onSubmit={handleSubmit}>
       <input
-        className="guess-input"
         type="text"
-        value={guess}
-        onChange={(e) => setGuess(e.target.value)}
         maxLength={wordLength}
         placeholder={`Write a ${wordLength}-letter word`}
+        value={currentGuess}
+        onChange={(e) => setCurrentGuess(e.target.value)}
+        disabled={disabled}
       />
-      <button className="guess-button" type="submit">
-      {disabled ? "Play again" : "Guess"}
+      <button type="submit" disabled={disabled}>
+        Guess
       </button>
     </form>
   );
-};
-
-export default GuessInput;
+}
