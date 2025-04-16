@@ -1,1 +1,49 @@
 <!--HTML-look a like to show highscores on /highscore-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/highscore.css" />
+    <title>Wordle Highscores</title>
+  </head>
+  <body>
+    <h1>🏆 Highscores</h1>
+    <div style="margin-bottom: 1rem">
+      <a href="/highscore/4">4 Letters</a> |
+      <a href="/highscore/5">5 Letters</a> |
+      <a href="/highscore/6">6 Letters</a>
+    </div>
+    <% if (scores.length > 0) { %>
+    <p>
+      Showing top scores for words with
+      <strong><%= scores[0].wordLength %></strong> letters
+    </p>
+    <% } %> <% if (scores.length === 0) { %>
+    <p>No scores yet... Be the first to play!</p>
+    <% } else { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>Guesses</th>
+          <th>Time (s)</th>
+          <th>Word Length</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% scores.forEach(score => { %>
+        <tr>
+          <td><%= score.username %></td>
+          <td><%= score.guesses %></td>
+          <td><%= score.time %></td>
+          <td><%= score.wordLength %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <% } %>
+  </body>
+</html>
+
+<!-- th = columnfonts , td = actual data-->

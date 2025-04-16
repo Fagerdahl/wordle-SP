@@ -139,17 +139,46 @@ const Home = () => {
           {message}
         </div>
       )}
-      <GuessInput onSubmitGuess={handleAddGuess} disabled={gameOver} />
-      {gameOver && !hasSubmitted && (
+      <GuessInput
+        onSubmitGuess={handleAddGuess}
+        disabled={gameOver}
+        onPlayAgain={resetGame}
+        wordLength={wordLength}
+      />
+      {gameOver && (
         <div style={{ marginTop: "20px", textAlign: "center" }}>
-          <p>Whats your name?:</p>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Your name"
-            style={{ padding: "8px", fontSize: "1rem" }}
-          />
+          {!hasSubmitted && (
+            <>
+              <p>What's your name?</p>
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Your name"
+                style={{
+                  padding: "8px",
+                  fontSize: "1rem",
+                  marginBottom: "1rem",
+                }}
+              />
+            </>
+          )}
+          <br />
+          <button
+            onClick={resetGame}
+            style={{
+              padding: "10px 20px",
+              fontSize: "1rem",
+              backgroundColor: "#4CAF50",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              marginTop: "10px",
+            }}
+          >
+            Play again 😎
+          </button>
         </div>
       )}
     </div>

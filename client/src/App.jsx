@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //Main Pages
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Highscore from "./pages/Highscore";
 //Global layout component
 import Navbar from "./Components/Navbar";
 
@@ -24,9 +25,10 @@ const App = () => {
       <Routes>
         {/* Home – main gameplay */}
         <Route path="/" element={<Home />} />
-
         {/* About – static info page */}
         <Route path="/about" element={<About />} />
+        {/* Highscore – SSR+SPA=Iframe */}
+        <Route path="/highscore" element={<Highscore />} />
         {/* Fallback if URL unmatched */}
         <Route path="*" element={<NotFound />} />
       </Routes>

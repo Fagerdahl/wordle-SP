@@ -1,0 +1,3 @@
+💡 During the process I struggled a bit with not using the highscore page as a react component. 
+I think it disturbes the UX to get navigated to a new page. I will try to make the UX as smooth as possible without CSR. 
+Therefore I will combine SSR and SPA.  

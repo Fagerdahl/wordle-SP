@@ -13,8 +13,8 @@ import Score from "./models/scoreModel.js";
 import highscoreRoutes from "./highscore.js";
 
 //Load environment variables from .env
-dotenv.config({ path: "./server/.env" });
-console.log("Loaded MONGO_URI:", process.env.MONGO_URI);
+dotenv.config({ path: "./.env" });
+console.log("Loaded MONGO_URI:", process.env.MONGO_URI || "USING FALLBACK URI");
 
 //Initialize app & database
 connectDB();
@@ -22,9 +22,10 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT || 5080;
 
-//Middleware
+//Middleware, allows different origins (react-port & express-port)
 app.use(cors());
 app.use(express.json());
+app.use(express.static(("public")));
 
 //API Routes
 app.use("/api/word", wordRoutes);
@@ -46,6 +47,21 @@ app.get("/highscore", async (req, res) => {
     res.status(500).send("Error loading highscore list");
   }
 });
+
+//SSR: GET /highscore/:length – Filtered by word length
+app.get("/highscore/:length", async (req, res) => {
+    const wordLength = parseInt(req.params.length);
+    try {
+      const scores = await Score.find({ wordLength })
+        .sort({ time: 1 })
+        .limit(5);
+      res.render("highscore", { scores });
+    } catch (error) {
+      console.error("Error fetching filtered highscore:", error.message);
+      res.status(500).send("Error loading filtered highscore");
+    }
+  });
+  
 
 //Root test route
 app.get("/", (req, res) => {

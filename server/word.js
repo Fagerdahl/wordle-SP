@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
     const match = { length };
 
     if (unique) {
-      // regex, no repeating letters
+      //regex, no repeating letters
       match.word = { $not: /(.).*\1/ }; 
     }
 
