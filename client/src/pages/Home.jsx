@@ -71,19 +71,19 @@ const Home = () => {
     }
   }, [win]);
 
-  useEffect(() => {
-    if (gameOver && startTime && !hasSubmitted) {
-      const finalUsername = username.trim() !== "" ? username : "Anonymous";
-      const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
-      const gameResult = {
-        username: finalUsername,
-        time: elapsedTime,
-        guesses: guesses.length,
-      };
-      submitScore(gameResult);
-      setHasSubmitted(true);
-    }
-  }, [gameOver, startTime, username, guesses, hasSubmitted]);
+  const handleSubmitScore = () => {
+    const finalName = username.trim() || "Anonymous";
+    const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+    const gameResult = {
+      username: finalName,
+      time: elapsedTime,
+      guesses: guesses.length,
+      wordLength: wordLength,
+      unique: onlyUniqueLetters,
+    };
+    submitScore(gameResult);
+    setHasSubmitted(true);
+  };
 
   const resetGame = (newLength = wordLength) => {
     setGuesses([]);
@@ -147,7 +147,7 @@ const Home = () => {
       />
       {gameOver && (
         <div style={{ marginTop: "20px", textAlign: "center" }}>
-          {!hasSubmitted && (
+          {!hasSubmitted ? (
             <>
               <p>What's your name?</p>
               <input
@@ -155,15 +155,28 @@ const Home = () => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Your name"
+                style={{ padding: "8px", fontSize: "1rem", marginBottom: "1rem" }}
+              />
+              <br />
+              <button
+                onClick={handleSubmitScore}
                 style={{
-                  padding: "8px",
+                  padding: "10px 20px",
                   fontSize: "1rem",
+                  backgroundColor: "#4CAF50",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
                   marginBottom: "1rem",
                 }}
-              />
+              >
+                Submit score
+              </button>
             </>
+          ) : (
+            <p>Thanks, score submitted!</p>
           )}
-          <br />
           <button
             onClick={resetGame}
             style={{
@@ -189,19 +202,25 @@ async function submitScore(result) {
   try {
     const response = await fetch("http://localhost:5080/api/scores", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(result),
     });
+
+    const text = await response.text();                
+    console.log("Server response status:", response.status);
+    console.log("Server response body:", text);
+
     if (!response.ok) {
-      throw new Error("Could not save the Score, sorry!");
+      throw new Error(`Server error ${response.status}: ${text}`);
     }
-    const data = await response.json();
+
+    const data = JSON.parse(text);
     console.log("Score saved:", data);
   } catch (error) {
     console.error("Error when saving Score:", error);
+    alert(`Error saving score: ${error.message}`);
   }
 }
+
 
 export default Home;

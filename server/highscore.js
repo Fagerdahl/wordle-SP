@@ -7,9 +7,9 @@ const router = express.Router();
 
 //POST /api/scores – Save new highscore
 router.post("/", async (req, res) => {
-  const { username, time, guesses } = req.body;
+  const { username, time, guesses, wordLength, unique } = req.body;
   try {
-    const newScore = new Score({ username, time, guesses });
+    const newScore = new Score({ username, time, guesses, wordLength, unique });
     await newScore.save();
     res.status(201).json(newScore);
   } catch (err) {
