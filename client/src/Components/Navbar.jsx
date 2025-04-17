@@ -7,7 +7,9 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="navbar-logo">WORDLE</div>
+      <a href="/" className="navbar-logo">
+        WORDLE
+      </a>
 
       <button
         className="navbar-toggle"
