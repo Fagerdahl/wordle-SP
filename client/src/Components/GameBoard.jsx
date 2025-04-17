@@ -21,9 +21,9 @@ const GameBoard = ({ guesses, solution }) => {
 
               return (
                 <div
-                  className={`board-cell ${color}`}
+                  className={`board-cell ${color} ${letter ? "flip" : ""}`}
                   key={colIndex}
-                  aria-label={`Letter ${letter || "empty"}`}
+                  style={{ animationDelay: `${colIndex * 150}ms` }}
                 >
                   {letter.toUpperCase()}
                 </div>

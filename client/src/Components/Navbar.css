@@ -66,6 +66,8 @@
   width: 100%;
 }
 
+/* BREAKPOINTS */
+
 @media (max-width: 600px) {
   .navbar-toggle {
     display: block;

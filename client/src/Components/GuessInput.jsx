@@ -4,28 +4,35 @@ import "./GuessInput.css";
 
 export default function GuessInput({ onSubmitGuess, disabled, wordLength }) {
   const [currentGuess, setCurrentGuess] = useState("");
+  const [shake, setShake] = useState(false);
+
+  const triggerShake = () => {
+    setShake(true);
+    setTimeout(() => setShake(false), 500);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (currentGuess.length !== wordLength) {
-      alert(`Guessed word must be ${wordLength} characters in length!`);
+      triggerShake();
       return;
     }
-
     onSubmitGuess(currentGuess);
     setCurrentGuess("");
   };
 
   return (
-    <form className="guess-form" onSubmit={handleSubmit}>
+    <form
+      className={`guess-form ${shake ? "shake" : ""}`}
+      onSubmit={handleSubmit}
+    >
       <input
         className="guess-input"
         type="text"
         maxLength={wordLength}
-        placeholder={`type here`}
+        placeholder={`Write a ${wordLength}-letter word`}
         value={currentGuess}
-        onChange={(e) => setCurrentGuess(e.target.value)}
+        onChange={(e) => setCurrentGuess(e.target.value.toUpperCase())}
         disabled={disabled}
       />
       <button className="guess-button" type="submit" disabled={disabled}>

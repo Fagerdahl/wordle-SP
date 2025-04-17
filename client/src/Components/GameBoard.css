@@ -22,8 +22,14 @@
     border-radius: 4px;
     transition: background-color 0.3s ease;
   }
+
+  .board-cell.flip {
+    backface-visibility: hidden;
+    transform-origin: center bottom;
+    animation: flip 0.5s ease-in-out forwards;
+  }
   
-  /* Feedback colors */
+  /* TILE COLORS */
   .board-cell.correct {
     background-color: #538d4e; /* green */
   }
@@ -39,4 +45,10 @@
   .board-cell.empty {
     background-color: #3a3a3c; /* empty */
   }
+
+  /* ANIMATIONS */
   
+  @keyframes flip {
+    0% { transform: rotateX(-90deg); }
+    100% { transform: rotateX(0); }
+  }
