@@ -30,7 +30,7 @@ export default function GuessInput({ onSubmitGuess, disabled, wordLength }) {
         className="guess-input"
         type="text"
         maxLength={wordLength}
-        placeholder={`Write a ${wordLength}-letter word`}
+        placeholder={`Type here`}
         value={currentGuess}
         onChange={(e) => setCurrentGuess(e.target.value.toUpperCase())}
         disabled={disabled}
