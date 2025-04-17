@@ -1,31 +1,18 @@
-/* Style for message */
 .message {
-  max-width: 90%;
-  margin: 20px auto;
-  padding: 15px;
+  width: 100%;
+  padding: var(--gap-sm);
+  margin-bottom: var(--gap-md);
+  border-radius: 4px;
   text-align: center;
-  font-size: 1.4rem;
-  font-weight: bold;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  font-weight: 600;
 }
 
-/* User won */
 .message.success {
-  background-color: #538d4e;
+  background-color: var(--color-success);
   color: #fff;
 }
 
-/* User lost */
 .message.error {
-  background-color: #b22222;
+  background-color: var(--color-error);
   color: #fff;
-}
-
-/* Responsive - smaller screen*/
-@media (max-width: 500px) {
-  .message {
-    font-size: 1.2rem;
-    padding: 10px;
-  }
 }

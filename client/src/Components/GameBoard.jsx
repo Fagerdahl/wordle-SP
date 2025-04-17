@@ -9,7 +9,7 @@ const GameBoard = ({ guesses, solution }) => {
   const columns = solution.length;
 
   return (
-    <div className="board-container">
+    <div className="board-container" style={{ "--cols": columns }}>
       {Array.from({ length: rows }).map((_, rowIndex) => {
         const guess = guesses[rowIndex] || "";
 

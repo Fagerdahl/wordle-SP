@@ -1,19 +1,47 @@
-//Menu for my pages
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import "./Navbar.css";
+import { HiMenu, HiX } from "react-icons/hi";
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
     <nav className="navbar">
-      <ul className="nav-links">
+      <div className="navbar-logo">WORDLE</div>
+
+      <button
+        className="navbar-toggle"
+        onClick={() => setOpen((o) => !o)}
+        aria-label={open ? "Close menu" : "Open menu"}
+      >
+        {open ? <HiX /> : <HiMenu />}
+      </button>
+
+      <ul className={`nav-links ${open ? "open" : ""}`}>
         <li>
-          <Link to="/">Home</Link>
+          <a
+            href="/"
+            className={window.location.pathname === "/" ? "active" : ""}
+          >
+            Home
+          </a>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <a
+            href="/about"
+            className={window.location.pathname === "/about" ? "active" : ""}
+          >
+            About
+          </a>
         </li>
-        <Link to="/highscore">Highscore</Link>
+        <li>
+          <a
+            href="/highscore"
+            className={window.location.pathname === "/scores" ? "active" : ""}
+          >
+            Highscores
+          </a>
+        </li>
       </ul>
     </nav>
   );

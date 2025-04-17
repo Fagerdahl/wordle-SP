@@ -18,16 +18,17 @@ export default function GuessInput({ onSubmitGuess, disabled, wordLength }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="guess-form" onSubmit={handleSubmit}>
       <input
+        className="guess-input"
         type="text"
         maxLength={wordLength}
-        placeholder={`Write a ${wordLength}-letter word`}
+        placeholder={`type here`}
         value={currentGuess}
         onChange={(e) => setCurrentGuess(e.target.value)}
         disabled={disabled}
       />
-      <button type="submit" disabled={disabled}>
+      <button className="guess-button" type="submit" disabled={disabled}>
         Guess
       </button>
     </form>

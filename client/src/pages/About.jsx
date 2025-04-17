@@ -33,15 +33,24 @@ const About = () => {
           <div className="modal">
             <h2>Technical Information</h2>
             <p className="modal-text">
-              Frontend: React + Vite <br />
-              Backend: Express + Node.js <br />
-              Database: MongoDB (Mongoose) <br />
-              Language: JavaScript <br />
+              <strong>Frontend:</strong> React + Vite <br />
+              <strong>Backend:</strong> Express + Node.js <br />
+              <strong>Database:</strong> MongoDB (Mongoose) <br />
+              <strong>Programming Language:</strong> JavaScript <br />
+              <strong>+ JSX:</strong> JavaScript-syntax-extension <br /> for
+              react components <br />
+              <strong>Template Engine:</strong> SSR-HTML
+              <br /> with EJS Templates <br />
+              <strong>Styling:</strong> CSS Custom Properties, <br /> Flexbox &
+              Grid <br />
             </p>
             <button onClick={handleCloseModal}>Close</button>
           </div>
         </div>
       )}
+      <a href="/" className="play-btn">
+        ▶️ Play Wordle
+      </a>
     </div>
   );
 };

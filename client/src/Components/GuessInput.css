@@ -1,46 +1,71 @@
-/* Centered form */
 .guess-form {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
+  align-items: center;
+  gap: var(--gap-sm);
+  margin-top: var(--gap-md);
 }
 
-/* Styling for textinput */
 .guess-input {
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  text-transform: uppercase;
+  flex: 1;
+  padding: var(--gap-sm) var(--gap-md);
+  font-family: var(--font-sans);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
 
-/* Styling for btn */
+.guess-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.guess-input:focus {
+  border-color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.guess-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .guess-button {
-  padding: 10px 20px;
+  padding: var(--gap-sm) var(--gap-md);
   font-size: 1rem;
-  background-color: #538d4e;
-  color: #fff;
+  font-weight: 600;
+  background-color: var(--color-success);
+  color: var(--color-text-light);
   border: none;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .guess-button:hover {
-  background-color: #446c3f;
-  transform: scale(1.1);
+  background-color: #446c3f; 
+  transform: scale(1.05);
 }
 
-/* Responsivite: Input field adjusted to smaller screens */
+.guess-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Smaller screens */
 @media (max-width: 500px) {
   .guess-input {
     width: 120px;
-    padding: 8px;
+    padding: var(--gap-sm);
     font-size: 0.9rem;
   }
 
   .guess-button {
-    padding: 8px 16px;
+    padding: var(--gap-sm) var(--gap-md);
     font-size: 0.9rem;
   }
 }

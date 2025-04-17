@@ -95,31 +95,36 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="app">
       <h1>Wordle Game</h1>
-      {/* Dropdown for word length */}
-      <label htmlFor="wordLength">Choose word length:</label>{" "}
-      <select
-        id="wordLength"
-        value={wordLength}
-        onChange={handleWordLengthChange}
-        //Disable changes in length while playing
-        disabled={!gameOver && guesses.length > 0}
-      >
-        <option value={4}>4 letters</option>
-        <option value={5}>5 letters</option>
-        <option value={6}>6 letters</option>
-      </select>
-      {/* Checkbox for only unique letters */}
-      <label style={{ display: "block", marginTop: "1rem" }}>
-        <input
-          type="checkbox"
-          checked={onlyUniqueLetters}
-          onChange={(e) => setOnlyUniqueLetters(e.target.checked)}
-          disabled={!gameOver && guesses.length > 0}
-        />
-        Only use unique letters
-      </label>
+
+      <div className="controls">
+        <div className="control">
+          <label htmlFor="wordLength">Choose word length:</label>
+          <select
+            id="wordLength"
+            value={wordLength}
+            onChange={handleWordLengthChange}
+            disabled={!gameOver && guesses.length > 0}
+          >
+            <option value={4}>4 letters</option>
+            <option value={5}>5 letters</option>
+            <option value={6}>6 letters</option>
+          </select>
+        </div>
+        <div className="control">
+          <label className="unique-label">
+            <input
+              type="checkbox"
+              checked={onlyUniqueLetters}
+              onChange={(e) => setOnlyUniqueLetters(e.target.checked)}
+              disabled={!gameOver && guesses.length > 0}
+            />
+            Only use unique letters
+          </label>
+        </div>
+      </div>
+
       {win && (
         <Confetti
           width={window.innerWidth}
@@ -155,7 +160,11 @@ const Home = () => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Your name"
-                style={{ padding: "8px", fontSize: "1rem", marginBottom: "1rem" }}
+                style={{
+                  padding: "8px",
+                  fontSize: "1rem",
+                  marginBottom: "1rem",
+                }}
               />
               <br />
               <button
@@ -206,7 +215,7 @@ async function submitScore(result) {
       body: JSON.stringify(result),
     });
 
-    const text = await response.text();                
+    const text = await response.text();
     console.log("Server response status:", response.status);
     console.log("Server response body:", text);
 
@@ -221,6 +230,5 @@ async function submitScore(result) {
     alert(`Error saving score: ${error.message}`);
   }
 }
-
 
 export default Home;
