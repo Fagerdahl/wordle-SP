@@ -1,14 +1,28 @@
 body {
-  box-sizing: border-box;
-  margin: 10;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
   padding: 1rem;
   font-family: Arial, sans-serif;
   background-color: #fafafa;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
   text-align: center;
 }
+
 table {
   border-collapse: collapse;
   background-color: rgba(255, 166, 0, 0.735);
+  width: 100%;
+  margin: 0 auto;
+}
+h1 {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
 }
 th,
 td {
@@ -20,4 +34,12 @@ th {
 }
 a:visited {
   color: #333;
+}
+
+/* A little contrast in columns */
+tbody tr:nth-child(odd) {
+  background-color: #f9e2a6;
+}
+tbody tr:nth-child(even) {
+  background-color: #f4cf7f;
 }

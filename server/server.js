@@ -43,7 +43,8 @@ app.set("views", path.join(__dirname, "views"));
 //SSR: GET /highscore – Render top 5 scores via EJS
 app.get("/highscore", async (req, res) => {
   try {
-    const scores = await Score.find().sort({ time: 1 }).limit(5);
+    const defaultLength = 5;
+    const scores = await Score.find({ wordLength: defaultLength }).sort({ time: 1 }).limit(5);
     res.render("highscore", { scores });
   } catch (error) {
     console.error("Error rendering highscore page:", error.message);
