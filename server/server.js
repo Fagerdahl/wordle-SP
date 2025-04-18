@@ -1,6 +1,5 @@
 //Main backend entry point where backend gets dressed and ready to serve!
 //All logic and routes live here, making the backend available to the frontend and browser💍
-
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -25,15 +24,19 @@ const PORT = process.env.PORT || 5080;
 //Middleware, allows different origins (react-port & express-port)
 app.use(cors());
 app.use(express.json());
-app.use(express.static(("public")));
+
+//Set up EJS for SSR, so that express knows where to find ejs-files
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+//Serving public folder (CSS for highscore, mm)
+app.use(express.static(path.join(__dirname, "public")));
 
 //API Routes
 app.use("/api/word", wordRoutes);
 app.use("/api/scores", highscoreRoutes);
 
-//Set up EJS for SSR, so that express knows where to find ejs-files
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+//SSR-views
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
@@ -50,22 +53,22 @@ app.get("/highscore", async (req, res) => {
 
 //SSR: GET /highscore/:length – Filtered by word length
 app.get("/highscore/:length", async (req, res) => {
-    const wordLength = parseInt(req.params.length);
-    try {
-      const scores = await Score.find({ wordLength })
-        .sort({ time: 1 })
-        .limit(5);
-      res.render("highscore", { scores });
-    } catch (error) {
-      console.error("Error fetching filtered highscore:", error.message);
-      res.status(500).send("Error loading filtered highscore");
-    }
-  });
-  
+  const wordLength = parseInt(req.params.length);
+  try {
+    const scores = await Score.find({ wordLength }).sort({ time: 1 }).limit(5);
+    res.render("highscore", { scores });
+  } catch (error) {
+    console.error("Error fetching filtered highscore:", error.message);
+    res.status(500).send("Error loading filtered highscore");
+  }
+});
 
-//Root test route
-app.get("/", (req, res) => {
-  res.send("Express server is running!");
+//Serve Vite build (frontend)
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+//Catch all for React Router (serving index.html for any other route)
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
 
 //Start server

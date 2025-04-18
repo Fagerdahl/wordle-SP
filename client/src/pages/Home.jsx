@@ -24,22 +24,17 @@ const Home = () => {
     resetGame(newLength);
   };
 
-  const fetchRandomWord = async (
-    length = wordLength,
-    unique = onlyUniqueLetters
-  ) => {
+  const fetchRandomWord = async () => {
     try {
-      const res = await fetch(
-        `http://localhost:5080/api/word?length=${length}&unique=${unique}`
-      );
+      const res = await fetch(`/api/word?length=${wordLength}&unique=${onlyUniqueLetters}`);
+      if (!res.ok) throw new Error(await res.text());
       const data = await res.json();
       setSolution(data.word);
-      setStartTime(Date.now());
     } catch (err) {
       console.error("Error fetching word:", err);
-      setSolution("apple");
-      setStartTime(Date.now());
+      setSolution("apple"); 
     }
+    setStartTime(Date.now());
   };
 
   useEffect(() => {

@@ -1,5 +1,33 @@
-💡 Thoughts and motives during the process of building this app
+💡 Thoughts and motives _during the process of building this app_
+I begun to build my logic in backend so that frontend has someone to talk to, that felt like a solid foundation.
 
-I will begin to build my logic in backend so that frontend has someone to talk to, date and finally marry to live happily ever after 👰‍♀️
+📄 Overview
+
+## 🖥️ SERVER.JS
+1. Middleware & JSON/CORS
+
+2. API-ROUTES
+GET /api/word => via word.js 
+GET /api/scores => via highscore.js
+
+3. SSR-VIEWS (EJS)
+GET /highscore
+GET /highscore/:length
+
+4. STATIC-Server
+app.use(express.static("../client/dist"))
+
+5. Catch all others and send my react SPA
+app.use((req,res)=>sendFile(index.html))
+
+## 📜 WORD.JS:
+1. Takes query parameters (`?length, ?unique`)
+
+2. Builds an Mongo match object
+
+3. Fetches one random word using _Word.aggregate([{ $match: match }, { $sample: { size: 1 } }])_
+
+4. Returns { word: "…" } or the fallback word apple
+
 
 

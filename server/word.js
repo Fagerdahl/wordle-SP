@@ -1,5 +1,4 @@
 //Express router to get a random word based on a length-parameter from db and return it to frontend
-
 import express from "express";
 import Word from "./models/wordModel.js";
 
@@ -20,25 +19,23 @@ router.get("/", async (req, res) => {
 
     if (unique) {
       //regex, no repeating letters
-      match.word = { $not: /(.).*\1/ }; 
+      match.word = { $not: /(.).*\1/ };
     }
 
     const randomWordArray = await Word.aggregate([
       { $match: match },
-      { $sample: { size: 1 } }
+      { $sample: { size: 1 } },
     ]);
 
     if (randomWordArray.length === 0) {
-      //Fallback
-      return res.json({ word: "apple" }); 
+      return res.json({ word: "apple" });
     }
-
-    res.json({ word: randomWordArray[0].word });
+    const randomWord = randomWordArray[0].word;
+    return res.json({ word: randomWord });
   } catch (err) {
     console.error("Error fetching word:", err);
     res.status(500).json({ message: "Error fetching word" });
   }
 });
-
 
 export default router;
