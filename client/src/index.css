@@ -1,0 +1,77 @@
+/* Defining global CSS variables, These are custom properties */
+:root {
+  --font-sans: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --color-bg: #121212;
+  --color-text: #eee;
+  --color-primary: #646cff;
+  --color-success: #538d4e;
+  --color-warning: #b59f3b;
+  --color-error: #b22222;
+  --gap-sm: 0.5rem;
+  --gap-md: 1rem;
+  --cell-size: 3.5rem;
+  --radius-sm: 4px;
+  --radius-lg: 8px;
+  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: var(--gap-md);
+}
+
+.app {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app > h1 {
+  font-size: 2rem;
+  margin-bottom: var(--gap-md);
+  color: var(--color-primary);
+  text-align: center;
+}
+
+/* styling for controls in beginning of Game */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-sm);
+  justify-content: center;
+  width: 100%;
+  margin-bottom: var(--gap-md);
+}
+
+.control {
+  flex: 1 1 100%;
+  min-width: 120px;
+}
+
+@media (min-width: 640px) {
+  .control {
+    flex: 0 1 auto;
+  }
+}
+
+.control label {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+}

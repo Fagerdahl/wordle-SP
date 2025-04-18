@@ -1,0 +1,14 @@
+.highscore-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: var(--gap-md);
+}
+
+.highscore-iframe {
+  width: 100%;
+  max-width: 1200px;
+  height: 600px;
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}

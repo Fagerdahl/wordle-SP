@@ -13,6 +13,7 @@ Built with **React frontend + Express backend**
 Data is stored in **MongoDB**
 
 # 🎯 How the GAME works
+User begins by chosing game settings (word length and repeating letters)
 A word is randomly selected via a backend API that communicates with mongoDB database.
 User enters guesses in a free text field and feedback is provided using colors:
 🟩 Green = correct letter and position
@@ -46,6 +47,7 @@ npm create vite@latest client --template react
 cd client 
 npm install
 |=> Installing dependencies for frontend
+npm install react-router-dom
 ```
 ### 🍑 /server (backend)
 ```bash
@@ -88,14 +90,14 @@ npm init -y
         -GameBoard.jsx (Wordle grid, 6 rows, 5 letters each. Colors the cells for relevant feedback)
         -GuessInput.jsx (Input field for user, guess-btn sent to onSubmitGuess logic)
         -Navbar.jsx (Menu for my pages)
-        -ScoreList.jsx
+
     📁pages
         -About.jsx
-        -Highscore.jsx
+        ~~Highscore.jsx~~
         -Home.jsx
-    📁src
-        -App.jsx (The heart of my React app, This contains routing and layout for my SPA. It takes over the index.html)
-        -main.jsx (Startfile for React. It tells index.html to render App component in root. main.jsx decides which component is active and runs after index.html pageload. React uses this one)  
+    
+    -App.jsx (The heart of my React app, This contains routing and layout for my SPA. It takes over the index.html)
+    -main.jsx (Startfile for React. It tells index.html to render App component in root. main.jsx decides which component is active and runs after index.html page load. React uses this one)  
 
 
 📁server (My Express backend with all logic that handles API, db & server)

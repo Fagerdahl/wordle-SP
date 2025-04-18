@@ -1,0 +1,16 @@
+{
+  "name": "wordle-sp",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:client": "npm run build --prefix client",
+    "start": "npm run build:client && node server/server.js",
+    "dev": "concurrently \"npm run dev --prefix client\" \"npm run dev --prefix server\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  },
+  "dependencies": {
+    "react-icons": "^5.5.0"
+  }
+}

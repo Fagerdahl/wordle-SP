@@ -1,0 +1,113 @@
+/* Container about page */
+.about-page {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: var(--gap-md);
+  background: #1e1e1e;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-md);
+}
+
+/* Heading and description */
+.about-page h1 {
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin: 0;
+  text-align: center;
+}
+.about-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+  margin: 0;
+}
+
+/* Base Button Styles */
+.readmore-btn,
+.play-btn,
+.close-btn {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+  text-align: center;
+}
+
+/* Read More Button */
+.readmore-btn {
+  width: 100%;
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  margin-bottom: var(--gap-md);
+}
+.readmore-btn:hover {
+  background-color: #545efb;
+  transform: translateY(-2px);
+}
+
+/* Play Wordle Button */
+.play-btn {
+  background-color: var(--color-success);
+  color: #fff;
+  margin-top: var(--gap-md);
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+}
+.play-btn:hover {
+  background-color: #3f6a3a;
+  transform: translateY(-2px);
+}
+
+/* Close Modal Button */
+.close-btn {
+  width: 100%;
+  background-color: var(--color-error);
+  color: #fff;
+  margin-top: var(--gap-md);
+}
+.close-btn:hover {
+  opacity: 0.8;
+}
+
+/* Backdrop */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+/* Modal Card */
+.modal {
+  width: 90%;
+  max-width: 350px;
+  background: #2a2a2a;
+  padding: var(--gap-md);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  color: var(--color-text);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+}
+.modal h2 {
+  font-size: 1.4rem;
+  margin: 0;
+}
+.modal-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
