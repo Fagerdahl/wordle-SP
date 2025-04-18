@@ -19,27 +19,29 @@ const Home = () => {
   const [wordLength, setWordLength] = useState(5);
 
   const handleWordLengthChange = (e) => {
-    const newLength = parseInt(e.target.value);
+    const newLength = parseInt(e.target.value, 10);
     setWordLength(newLength);
-    resetGame(newLength);
+    resetGame();
   };
 
   const fetchRandomWord = async () => {
     try {
-      const res = await fetch(`/api/word?length=${wordLength}&unique=${onlyUniqueLetters}`);
+      const res = await fetch(
+        `/api/word?length=${wordLength}&unique=${onlyUniqueLetters}`
+      );
       if (!res.ok) throw new Error(await res.text());
-      const data = await res.json();
-      setSolution(data.word);
+      const { word } = await res.json();
+      setSolution(word);
     } catch (err) {
       console.error("Error fetching word:", err);
-      setSolution("apple"); 
+      setSolution("apple");
     }
     setStartTime(Date.now());
   };
 
   useEffect(() => {
     fetchRandomWord();
-  }, []);
+  }, [wordLength, onlyUniqueLetters]);
 
   const handleAddGuess = (guess) => {
     if (!gameOver && guesses.length < 6) {
@@ -129,7 +131,11 @@ const Home = () => {
           gravity={0.4}
         />
       )}
-      <GameBoard guesses={guesses} solution={solution} />
+      <GameBoard
+        guesses={guesses}
+        solution={solution}
+        wordLength={wordLength}
+      />
       {message && (
         <div
           className={`message ${

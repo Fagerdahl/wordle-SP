@@ -4,9 +4,9 @@
 import React from "react";
 import "./GameBoard.css";
 
-const GameBoard = ({ guesses, solution }) => {
+const GameBoard = ({ guesses, solution, wordLength }) => {
   const rows = 6;
-  const columns = solution.length;
+  const columns = wordLength;
 
   return (
     <div className="board-container" style={{ "--cols": columns }}>
