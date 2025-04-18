@@ -10,6 +10,7 @@
   <body>
     <h1>🏆 Highscores</h1>
     <div style="margin-bottom: 1rem">
+      <a href="/" class="home-link">🏠 Home</a> &nbsp;|&nbsp;
       <a href="/highscore/4">4 Letters</a> |
       <a href="/highscore/5">5 Letters</a> |
       <a href="/highscore/6">6 Letters</a>
@@ -21,6 +22,9 @@
     </p>
     <% } %> <% if (scores.length === 0) { %>
     <p>No scores yet... Be the first to play!</p>
+    <div class="play-back">
+      <a href="/" class="play-btn">▶️ Play Wordle</a>
+    </div>
     <% } else { %>
     <table>
       <thead>
@@ -42,6 +46,9 @@
         <% }) %>
       </tbody>
     </table>
+    <div class="play-back">
+      <a href="/" class="play-btn">▶️ Play Wordle</a>
+    </div>
     <% } %>
   </body>
 </html>
